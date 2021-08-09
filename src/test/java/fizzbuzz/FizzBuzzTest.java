@@ -6,16 +6,11 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import static fizzbuzz.FizzBuzz.fizzBuzzNumber;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class FizzBuzzTest {
 
-    private FizzBuzz fizzBuzz;
-
-    @BeforeEach
-    void setUp() {
-        fizzBuzz = new FizzBuzz();
-    }
 
     @Test
     @DisplayName("Should return input as String")
@@ -23,7 +18,7 @@ class FizzBuzzTest {
         // Given
         int number = 1;
         // When
-        String fizzBuzzAnswer = fizzBuzz.fizzBuzzNumber(number);
+        String fizzBuzzAnswer = fizzBuzzNumber(number);
         // Then
         assertThat(fizzBuzzAnswer.equals(Integer.toString(number))).isTrue();
     }
@@ -40,7 +35,7 @@ class FizzBuzzTest {
     @DisplayName("Should return number as String if not dividable by 3 and/or 5")
     void shouldReturnNumberAsString(int number, boolean expected) {
         // When
-        String fizzBuzzAnswer = fizzBuzz.fizzBuzzNumber(number);
+        String fizzBuzzAnswer = fizzBuzzNumber(number);
         // Then
         assertThat(fizzBuzzAnswer.equals(Integer.toString(number))).isEqualTo(expected);
     }
@@ -58,7 +53,7 @@ class FizzBuzzTest {
     @DisplayName("Should return Fizz if only dividable by 3")
     void shouldReturnFizz(int number, boolean expected) {
         // When
-        String fizzBuzzAnswer = fizzBuzz.fizzBuzzNumber(number);
+        String fizzBuzzAnswer = fizzBuzzNumber(number);
         // Then
         assertThat(fizzBuzzAnswer.equals("Fizz")).isEqualTo(expected);
     }
@@ -77,7 +72,7 @@ class FizzBuzzTest {
     @DisplayName("Should return Buzz if only dividable by 5")
     void shouldReturnBuzz(int number, boolean expected) {
         // When
-        String fizzBuzzAnswer = fizzBuzz.fizzBuzzNumber(number);
+        String fizzBuzzAnswer = fizzBuzzNumber(number);
         // Then
         assertThat(fizzBuzzAnswer.equals("Buzz")).isEqualTo(expected);
     }
@@ -97,8 +92,28 @@ class FizzBuzzTest {
     @DisplayName("Should return FizzBuzz if dividable by 3 and 5")
     void shouldReturnFizzBuzz(int number, boolean expected) {
         // When
-        String fizzBuzzAnswer = fizzBuzz.fizzBuzzNumber(number);
+        String fizzBuzzAnswer = fizzBuzzNumber(number);
         // Then
         assertThat(fizzBuzzAnswer.equals("FizzBuzz")).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "1, '1'",
+            "2, '2'",
+            "3, 'Fizz'",
+            "4, '4'",
+            "5, 'Buzz'",
+            "6, 'Fizz'",
+            "15, 'FizzBuzz'",
+            "20, 'Buzz'",
+            "30, 'FizzBuzz'"
+    })
+    @DisplayName("Should return FizzBuzz if dividable by 3 and 5")
+    void shouldReturnFizzBuzz(int number, String expected) {
+        // When
+        String fizzBuzzAnswer = fizzBuzzNumber(number);
+        // Then
+        assertThat(fizzBuzzAnswer).isEqualTo(expected);
     }
 }
