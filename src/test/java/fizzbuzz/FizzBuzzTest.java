@@ -13,12 +13,10 @@ class FizzBuzzTest {
   @Test
   @DisplayName("Should return input as String")
   void shouldReturnANumberString() {
-    // Given
-    int number = 1;
     // When
-    String fizzBuzzAnswer = fizzBuzzNumber(number);
+    String fizzBuzzAnswer = fizzBuzzNumber(1);
     // Then
-    assertThat(fizzBuzzAnswer.equals(Integer.toString(number))).isTrue();
+    assertThat(fizzBuzzAnswer).isEqualTo("1");
   }
 
   @ParameterizedTest
