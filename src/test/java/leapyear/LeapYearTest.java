@@ -34,6 +34,5 @@ public class LeapYearTest {
   void aYearIsAnAtypicalLeapYearWhenDivisibleBy400() {
     assertThat(isLeapYear(1600)).isTrue();
     assertThat(isLeapYear(2000)).isTrue();
-    assertThat(isLeapYear(1900)).isFalse();
   }
 }
