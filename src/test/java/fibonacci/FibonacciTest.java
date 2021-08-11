@@ -12,6 +12,8 @@ public class FibonacciTest {
     assertThat(numberAtPosition(-42)).isEqualTo(0);
     assertThat(numberAtPosition(0)).isEqualTo(0);
     assertThat(numberAtPosition(1)).isEqualTo(0);
+    assertThat(numberAtPosition(2)).isNotEqualTo(0);
+    assertThat(numberAtPosition(3)).isNotEqualTo(0);
   }
 
   @Test

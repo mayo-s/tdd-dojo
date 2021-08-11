@@ -2,6 +2,7 @@ package fibonacci;
 
 public class Fibonacci {
 
+  // f(n) = f(n - 2) + f(n - 1)
   public static int numberAtPosition(int position) {
     int nMinusTwo = 0;
     if (position <= 1) return nMinusTwo;
