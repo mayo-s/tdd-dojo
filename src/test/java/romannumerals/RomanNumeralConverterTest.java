@@ -6,86 +6,86 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static romannumerals.RomanNumeralConverter.arabicToRoman;
+import static romannumerals.RomanNumeralConverter.toRoman;
 
 public class RomanNumeralConverterTest {
 
   @Test
   void shouldConvertArabicOneToRomanI() {
-    assertThat(arabicToRoman(1)).hasValue("I");
+    assertThat(toRoman(1)).hasValue("I");
   }
 
   @Test
   void shouldConvertArabicFiveToRomanV() {
-    assertThat(arabicToRoman(5)).hasValue("V");
+    assertThat(toRoman(5)).hasValue("V");
   }
 
   @Test
   void shouldConvertArabicTenToRomanX() {
-    assertThat(arabicToRoman(10)).hasValue("X");
+    assertThat(toRoman(10)).hasValue("X");
   }
 
   @Test
   void shouldConvertArabic50ToRomanL() {
-    assertThat(arabicToRoman(50)).hasValue("L");
+    assertThat(toRoman(50)).hasValue("L");
   }
 
   @Test
   void shouldConvertArabic100ToRomanC() {
-    assertThat(arabicToRoman(100)).hasValue("C");
+    assertThat(toRoman(100)).hasValue("C");
   }
 
   @Test
   void shouldConvertArabic500ToRomanD() {
-    assertThat(arabicToRoman(500)).hasValue("D");
+    assertThat(toRoman(500)).hasValue("D");
   }
 
   @Test
   void shouldConvertArabic1000ToRomanM() {
-    assertThat(arabicToRoman(1000)).hasValue("M");
+    assertThat(toRoman(1000)).hasValue("M");
   }
 
   @Test
   void shouldConvertArabicFourToRomanIV() {
-    assertThat(arabicToRoman(4)).hasValue("IV");
+    assertThat(toRoman(4)).hasValue("IV");
   }
 
   @Test
   void shouldConvertArabicNineToRomanIX() {
-    assertThat(arabicToRoman(9)).hasValue("IX");
+    assertThat(toRoman(9)).hasValue("IX");
   }
 
   @Test
   void shouldConvertArabic40ToRomanXL() {
-    assertThat(arabicToRoman(40)).hasValue("XL");
+    assertThat(toRoman(40)).hasValue("XL");
   }
 
   @Test
   void shouldConvertArabic90ToRomanXC() {
-    assertThat(arabicToRoman(90)).hasValue("XC");
+    assertThat(toRoman(90)).hasValue("XC");
   }
 
   @Test
   void shouldConvertArabic400ToRomanCD() {
-    assertThat(arabicToRoman(400)).hasValue("CD");
+    assertThat(toRoman(400)).hasValue("CD");
   }
 
   @Test
   void shouldConvertArabic900ToRomanCM() {
-    assertThat(arabicToRoman(900)).hasValue("CM");
+    assertThat(toRoman(900)).hasValue("CM");
   }
 
   @Test
   void shouldReturnEmptyOptionalWhenArabicNumberIsLessThanOne() {
-    assertThat(arabicToRoman(0)).isEmpty();
-    assertThat(arabicToRoman(1)).isNotEmpty();
-    assertThat(arabicToRoman(-1)).isEmpty();
+    assertThat(toRoman(0)).isEmpty();
+    assertThat(toRoman(1)).isNotEmpty();
+    assertThat(toRoman(-1)).isEmpty();
   }
 
   @Test
   void shouldReturnEmptyOptionalWhenArabicNumberIsGreaterThan3999() {
-    assertThat(arabicToRoman(3999)).isNotEmpty();
-    assertThat(arabicToRoman(4000)).isEmpty();
+    assertThat(toRoman(3999)).isNotEmpty();
+    assertThat(toRoman(4000)).isEmpty();
   }
 
   @Test
@@ -100,8 +100,7 @@ public class RomanNumeralConverterTest {
     expected.put(3999, "MMMCMXCIX");
 
     for (Map.Entry<Integer, String> arabicNumber : expected.entrySet()) {
-      assertThat(arabicToRoman(arabicNumber.getKey())).hasValue(arabicNumber.getValue());
+      assertThat(toRoman(arabicNumber.getKey())).hasValue(arabicNumber.getValue());
     }
   }
-
 }

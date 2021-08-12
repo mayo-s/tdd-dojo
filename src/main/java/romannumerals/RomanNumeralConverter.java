@@ -13,11 +13,11 @@ public class RomanNumeralConverter {
   public static void main(String[] args) {
     int[] arabicNumbers = {0, 1, 4, 5, 9, 10, 40, 50, 90, 99, 100, 400, 500, 900, 999, 1000, 2499, 2021, 1984, 1492, 42, 1337, 3999, 4000};
     for (int arabicNumber : arabicNumbers) {
-      System.out.println(arabicNumber + " ==> " + arabicToRoman(arabicNumber));
+      System.out.println(arabicNumber + " ==> " + toRoman(arabicNumber));
     }
   }
 
-  public static Optional<String> arabicToRoman(int arabicNumber) {
+  public static Optional<String> toRoman(int arabicNumber) {
     if (arabicNumber < 1 || arabicNumber > 3999) return Optional.empty();
 
     List<Pair<String, Integer>> romanNumerals = Stream.of(
