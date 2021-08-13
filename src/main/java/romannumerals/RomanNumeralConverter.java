@@ -2,7 +2,6 @@ package romannumerals;
 
 import org.springframework.data.util.Pair;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -11,7 +10,7 @@ import java.util.stream.Stream;
 public class RomanNumeralConverter {
 
   public static void main(String[] args) {
-    int[] arabicNumbers = {0, 1, 4, 5, 9, 10, 40, 50, 90, 99, 100, 400, 500, 900, 999, 1000, 2499, 2021, 1984, 1492, 42, 1337, 3999, 4000};
+    int[] arabicNumbers = {0, 1, 4, 5, 9, 10, 40, 50, 90, 99, 100, 111, 400, 500, 900, 999, 1000, 1111, 2499, 2021, 1984, 1492, 42, 1337, 3999, 4000};
     for (int arabicNumber : arabicNumbers) {
       System.out.println(arabicNumber + " ==> " + toRoman(arabicNumber));
     }
@@ -36,7 +35,6 @@ public class RomanNumeralConverter {
         Pair.of("I", 1)
     ).collect(Collectors.toList());
 
-    ArrayList<Pair<String, Integer>> numerals = new ArrayList<>();
     int rest = arabicNumber;
     StringBuilder romanNumeral = new StringBuilder();
     for (Pair<String, Integer> rn : romanNumerals) {
