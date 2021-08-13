@@ -1,9 +1,8 @@
 package romannumerals;
 
 import org.junit.jupiter.api.Test;
-
-import java.util.HashMap;
-import java.util.Map;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static romannumerals.RomanNumeralConverter.toRoman;
@@ -88,19 +87,17 @@ public class RomanNumeralConverterTest {
     assertThat(toRoman(4000)).isEmpty();
   }
 
-  @Test
-  void shouldConvertArabicNumbersBetweenOneAnd3999() {
-
-    HashMap<Integer, String> expected = new HashMap<>();
-    expected.put(2, "II");
-    expected.put(2021, "MMXXI");
-    expected.put(1984, "MCMLXXXIV");
-    expected.put(42, "XLII");
-    expected.put(1337, "MCCCXXXVII");
-    expected.put(3999, "MMMCMXCIX");
-
-    for (Map.Entry<Integer, String> arabicNumber : expected.entrySet()) {
-      assertThat(toRoman(arabicNumber.getKey())).hasValue(arabicNumber.getValue());
-    }
+  @ParameterizedTest
+  @CsvSource({
+      "2, 'II'",
+      "111, 'CXI'",
+      "2021, 'MMXXI'",
+      "1984, 'MCMLXXXIV'",
+      "42, 'XLII'",
+      "1337, 'MCCCXXXVII'",
+      "3999, 'MMMCMXCIX'",
+  })
+  void shouldConvertNumberBetweenOneAnd3999(int number, String expected) {
+    assertThat(toRoman(number)).hasValue(expected);
   }
 }
