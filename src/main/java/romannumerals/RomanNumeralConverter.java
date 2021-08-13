@@ -17,7 +17,7 @@ public class RomanNumeralConverter {
     }
   }
 
-  public static Optional<String> toRoman(int arabicNumber) {
+  public static Optional<String> toRoman(final int arabicNumber) {
     if (arabicNumber < 1 || arabicNumber > 3999) return Optional.empty();
 
     List<Pair<String, Integer>> romanNumerals = Stream.of(
@@ -37,17 +37,13 @@ public class RomanNumeralConverter {
     ).collect(Collectors.toList());
 
     ArrayList<Pair<String, Integer>> numerals = new ArrayList<>();
-
-    for (Pair<String, Integer> rn : romanNumerals) {
-      Pair<String, Integer> numeral = Pair.of(rn.getFirst(), arabicNumber / rn.getSecond());
-      numerals.add(numeral);
-      arabicNumber -= rn.getSecond() * numeral.getSecond();
-    }
-
+    int rest = arabicNumber;
     StringBuilder romanNumeral = new StringBuilder();
-    for (Pair<String, Integer> numeral : numerals) {
-      romanNumeral.append(numeral.getFirst().repeat(numeral.getSecond()));
+    for (Pair<String, Integer> rn : romanNumerals) {
+      romanNumeral.append(rn.getFirst().repeat(rest / rn.getSecond()));
+      rest -= rn.getSecond() * (rest / rn.getSecond());
     }
+
     return Optional.of(romanNumeral.toString());
   }
 }
