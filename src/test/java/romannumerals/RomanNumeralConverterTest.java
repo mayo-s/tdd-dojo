@@ -10,79 +10,79 @@ import static romannumerals.RomanNumeralConverter.toRoman;
 public class RomanNumeralConverterTest {
 
   @Test
-  void shouldConvertArabicOneToRomanI() {
+  void shouldConvertOneToRomanNumeralI() {
     assertThat(toRoman(1)).hasValue("I");
   }
 
   @Test
-  void shouldConvertArabicFiveToRomanV() {
+  void shouldConvertFiveToRomanNumeralV() {
     assertThat(toRoman(5)).hasValue("V");
   }
 
   @Test
-  void shouldConvertArabicTenToRomanX() {
+  void shouldConvertTenToRomanNumeralX() {
     assertThat(toRoman(10)).hasValue("X");
   }
 
   @Test
-  void shouldConvertArabic50ToRomanL() {
+  void shouldConvert50ToRomanNumeralL() {
     assertThat(toRoman(50)).hasValue("L");
   }
 
   @Test
-  void shouldConvertArabic100ToRomanC() {
+  void shouldConvert100ToRomanNumeralC() {
     assertThat(toRoman(100)).hasValue("C");
   }
 
   @Test
-  void shouldConvertArabic500ToRomanD() {
+  void shouldConvert500ToRomanNumeralD() {
     assertThat(toRoman(500)).hasValue("D");
   }
 
   @Test
-  void shouldConvertArabic1000ToRomanM() {
+  void shouldConvert1000ToRomanNumeralM() {
     assertThat(toRoman(1000)).hasValue("M");
   }
 
   @Test
-  void shouldConvertArabicFourToRomanIV() {
+  void numberFourIsDeclaredAsRomanNumeralIV() {
     assertThat(toRoman(4)).hasValue("IV");
   }
 
   @Test
-  void shouldConvertArabicNineToRomanIX() {
+  void numberNineIsDeclaredAsRomanNumeralIX() {
     assertThat(toRoman(9)).hasValue("IX");
   }
 
   @Test
-  void shouldConvertArabic40ToRomanXL() {
+  void number40IsDeclaredAsRomanNumeralXL() {
     assertThat(toRoman(40)).hasValue("XL");
   }
 
   @Test
-  void shouldConvertArabic90ToRomanXC() {
+  void number90IsDeclaredAsRomanNumeralXC() {
     assertThat(toRoman(90)).hasValue("XC");
   }
 
   @Test
-  void shouldConvertArabic400ToRomanCD() {
+  void number400IsDeclaredAsRomanNumeralCD() {
     assertThat(toRoman(400)).hasValue("CD");
   }
 
   @Test
-  void shouldConvertArabic900ToRomanCM() {
+  void number900IsDeclaredAsRomanNumeralCM() {
     assertThat(toRoman(900)).hasValue("CM");
   }
 
   @Test
-  void shouldReturnEmptyOptionalWhenArabicNumberIsLessThanOne() {
-    assertThat(toRoman(0)).isEmpty();
+  void shouldReturnEmptyOptionalWhenNumberIsLessThanOne() {
     assertThat(toRoman(1)).isNotEmpty();
+    assertThat(toRoman(0)).isEmpty();
     assertThat(toRoman(-1)).isEmpty();
   }
 
   @Test
-  void shouldReturnEmptyOptionalWhenArabicNumberIsGreaterThan3999() {
+  void shouldReturnEmptyOptionalWhenNumberIsGreaterThan3999() {
     assertThat(toRoman(3999)).isNotEmpty();
     assertThat(toRoman(4000)).isEmpty();
   }
