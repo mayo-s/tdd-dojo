@@ -1,6 +1,7 @@
 package primefactors;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Factorizer {
 
@@ -9,7 +10,7 @@ public class Factorizer {
   public static int[] findPrimeFactors(final int number) {
 
     if (number <= 1) return new int[]{};
-    if (isPrime(number)) return new int[]{};
+    if (isPrime(number)) return new int[]{number};
 
     primeFactors = new ArrayList<>();
     factorize(number, getMaxPrime(number));
@@ -21,10 +22,10 @@ public class Factorizer {
     if (isPrime(factor) && number % factor == 0) {
       primeFactors.add(factor);
       int quotient = number / factor;
-      if(!isPrime(quotient)) factorize(quotient, getMaxPrime(quotient));
+      if (!isPrime(quotient)) factorize(quotient, getMaxPrime(quotient));
       else primeFactors.add(quotient);
-    }
-    else factorize(number, factor - 1);
+//    TODO Double check recursion exit
+    } else factorize(number, factor - 1);
   }
 
   private static int getMaxPrime(int number) {
